@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --box: 400px;
+  --gap: 6px;
+  --radius: 6px;
+  --scale: 1;
+}
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(#121212, #232323);
+}
+.holder {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  place-items: center;
+  gap: 48px;
+}
+.holder .puzzletext {
+  font-family: 'Press Start 2P';
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: repeat(2, 1fr);
+  color: #ffb3ff;
+  -webkit-text-stroke: 1px #f0a;
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.35);
+  text-align: center;
+  font-size: clamp(20px, 6vw, 34px);
+  margin-top: 25px;
+  margin-bottom: -50px;
+}
+.holder .box {
+  width: var(--box);
+  height: var(--box);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  padding: var(--gap);
+  border-radius: var(--radius);
+  background: linear-gradient(#222, #333);
+  border: 2px solid rgba(255,255,255,0.25);
+  transform-origin: center;
+  transform: scale(var(--scale));
+}
+.holder .box .piece {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background-image: radial-gradient(transparent, rgba(0,0,0,0.55));
+  background-color: #0f0;
+  box-shadow: inset -1px -1px 1px rgba(0,0,0,0.25), inset 1px 1px 1px rgba(255,255,255,0.6);
+}
+.holder .box .piece:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255,255,255,0.25);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.holder .box .piece:hover:after {
+  opacity: 1;
+}
+.holder .box .piece span {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: 'Press Start 2P';
+  color: #ffb3ff;
+  -webkit-text-stroke: 1px #f0a;
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.35);
+  font-size: 22px;
+}
+@media (max-width: 440px) {
+  :root {
+    --scale: 0.85;
+  }
+}
+@media (max-width: 360px) {
+  :root {
+    --scale: 0.75;
+  }
+}
